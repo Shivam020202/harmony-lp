@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmony Neurocare - TMS Mental Health Treatment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Theme update: replaced original gold accents (#d4a574 / #c89560) with lavender shades
+           Primary lavender: #BFA2FF  (used for backgrounds, borders, text accents)
+           Hover lavender : #A687FF  (used for hover states)
+        */
+        * {
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Montserrat Alternates", sans-serif;
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(38, 49, 70, 0.55) 0%, rgba(38, 49, 70, 0.55) 100%), url('https://images.unsplash.com/photo-1758551152770-4bea81cc7c0f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2800');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .condition-card {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .condition-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(38, 49, 70, 0.4) 0%, rgba(38, 49, 70, 0.7) 100%);
+            z-index: 1;
+        }
+
+        .condition-card>* {
+            position: relative;
+            z-index: 2;
+        }
+
+        .insurance-logo {
+            height: 60px;
+            object-fit: contain;
+            filter: brightness(0.9);
+        }
+
+        .navbar-blur {
+            backdrop-filter: blur(10px);
+            background-color: rgba(38, 49, 70, 0.95);
+        }
+
+        .section-divider {
+            background: linear-gradient(90deg, transparent, #BFA2FF, transparent);
+            height: 2px;
+        }
+
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(38, 49, 70, 0.2);
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+    <!-- Navbar -->
+    <nav class="navbar-blur sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center max-w-xs">
+                    <img src="harmony-light.png" alt="logo">
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#services" class="text-gray-200 hover:text-[#BFA2FF] transition">Services</a>
+                    <a href="#tms" class="text-gray-200 hover:text-[#BFA2FF] transition">TMS Therapy</a>
+                    <a href="#team" class="text-gray-200 hover:text-[#BFA2FF] transition">Team</a>
+                    <a href="#contact" class="text-gray-200 hover:text-[#BFA2FF] transition">Contact</a>
+                </div>
+                <a href="#contact"
+                    class="bg-[#BFA2FF] text-[#263146] px-6 py-2 text-sm rounded-lg font-semibold hover:bg-[#A687FF] transition">
+                    Book Now
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg py-32 md:py-48 relative">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 text-shadow">
+                Your Path to Mental Wellness
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-100 mb-8 max-w-2xl mx-auto leading-relaxed">
+                Advanced TMS therapy for depression, anxiety, and other mental health conditions. Compassionate care in
+                Castle Rock, Colorado.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#contact"
+                    class="bg-[#BFA2FF] text-[#263146] px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#A687FF] transition">
+                    Schedule Consultation
+                </a>
+                <a href="#tms"
+                    class="border-2 border-[#BFA2FF] text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#BFA2FF] hover:text-[#263146] transition">
+                    Learn About TMS
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-[#263146] mb-4">Conditions We Treat</h2>
+                <div class="section-divider mx-auto max-w-52 mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    TMS therapy has been proven effective for a wide range of mental health conditions
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Depression -->
+                <div class="condition-card h-64 rounded-xl shadow-lg hover-lift"
+                    style="background-image: url('https://images.unsplash.com/photo-1456162018889-1d2b969f7084?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2073')">
+                    <div class="h-full flex flex-col justify-end p-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Depression</h3>
+                        <p class="text-gray-100 text-sm">Effective treatment for major depressive disorder</p>
+                    </div>
+                </div>
+                <!-- Anxiety -->
+                <div class="condition-card h-64 rounded-xl shadow-lg hover-lift"
+                    style="background-image: url('https://images.unsplash.com/photo-1595178156906-2396ef837b0f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070')">
+                    <div class="h-full flex flex-col justify-end p-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Anxiety Disorders</h3>
+                        <p class="text-gray-100 text-sm">Relief from generalized anxiety and panic</p>
+                    </div>
+                </div>
+                <!-- PTSD -->
+                <div class="condition-card h-64 rounded-xl shadow-lg hover-lift"
+                    style="background-image: url('https://images.unsplash.com/photo-1701303807495-a31079d67169?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2031')">
+                    <div class="h-full flex flex-col justify-end p-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">PTSD</h3>
+                        <p class="text-gray-100 text-sm">Trauma-informed care and recovery support</p>
+                    </div>
+                </div>
+                <!-- OCD -->
+                <div class="condition-card h-64 rounded-xl shadow-lg hover-lift"
+                    style="background-image: url('https://images.unsplash.com/photo-1542865763-0339b28c4a34?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=987')">
+                    <div class="h-full flex flex-col justify-end p-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">OCD</h3>
+                        <p class="text-gray-100 text-sm">Specialized treatment for obsessive patterns</p>
+                    </div>
+                </div>
+                <!-- Bipolar Disorder -->
+                <div class="condition-card h-64 rounded-xl shadow-lg hover-lift"
+                    style="background-image: url('https://images.unsplash.com/photo-1698276504446-7dfdaf53d254?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=987')">
+                    <div class="h-full flex flex-col justify-end p-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Bipolar Disorder</h3>
+                        <p class="text-gray-100 text-sm">Mood stabilization and symptom management</p>
+                    </div>
+                </div>
+                <!-- Chronic Pain -->
+                <div class="condition-card h-64 rounded-xl shadow-lg hover-lift"
+                    style="background-image: url('https://images.unsplash.com/photo-1534343133720-0c20dba3a360?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070')">
+                    <div class="h-full flex flex-col justify-end p-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Chronic Pain</h3>
+                        <p class="text-gray-100 text-sm">Integrated pain management approach</p>
+                    </div>
+                </div>
+                <!-- Substance Use -->
+                <div class="condition-card h-64 rounded-xl shadow-lg hover-lift"
+                    style="background-image: url('https://images.unsplash.com/photo-1759276724886-abb197982c5c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1035')">
+                    <div class="h-full flex flex-col justify-end p-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Substance Use</h3>
+                        <p class="text-gray-100 text-sm">Comprehensive addiction treatment support</p>
+                    </div>
+                </div>
+                <!-- Migraine -->
+                <div class="condition-card h-64 rounded-xl shadow-lg hover-lift"
+                    style="background-image: url('https://images.unsplash.com/photo-1554188572-9d184b57d8e2?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1974')">
+                    <div class="h-full flex flex-col justify-end p-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Migraine</h3>
+                        <p class="text-gray-100 text-sm">Advanced neuromodulation therapy</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TMS Therapy Section -->
+    <section id="tms" class="py-20 bg-gradient-to-br from-[#263146] to-[#1a1f2e] text-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">How TMS Therapy Works</h2>
+                <div class="section-divider mx-auto max-w-52 mb-6"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                <div>
+                    <img src="https://www.diamondlakeclinic.org/wp-content/uploads/2020/09/TMS-Therapy.jpg"
+                        alt="TMS Therapy" class="rounded-xl shadow-2xl">
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold mb-6">What is TMS?</h3>
+                    <p class="text-lg text-gray-200 mb-4 leading-relaxed">
+                        Transcranial Magnetic Stimulation (TMS) is a non-invasive procedure that uses magnetic pulses to
+                        stimulate nerve cells in the brain. It's FDA-approved and has helped thousands of patients find
+                        relief from treatment-resistant conditions.
+                    </p>
+                    <p class="text-lg text-gray-200 leading-relaxed">
+                        Unlike medications, TMS works directly on the brain regions responsible for mood regulation,
+                        offering a natural alternative with minimal side effects.
+                    </p>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div
+                    class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm border border-[#BFA2FF] border-opacity-30">
+                    <div class="text-4xl font-bold text-[#BFA2FF] mb-4">1</div>
+                    <h4 class="text-xl font-bold mb-3">Non-Invasive</h4>
+                    <p class="text-gray-200">No surgery, no anesthesia, no systemic side effects. Treatment is performed
+                        in our comfortable clinic.</p>
+                </div>
+                <div
+                    class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm border border-[#BFA2FF] border-opacity-30">
+                    <div class="text-4xl font-bold text-[#BFA2FF] mb-4">2</div>
+                    <h4 class="text-xl font-bold mb-3">Proven Effective</h4>
+                    <p class="text-gray-200">FDA-approved with clinical studies showing 50-60% remission rates for
+                        treatment-resistant depression.</p>
+                </div>
+                <div
+                    class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm border border-[#BFA2FF] border-opacity-30">
+                    <div class="text-4xl font-bold text-[#BFA2FF] mb-4">3</div>
+                    <h4 class="text-xl font-bold mb-3">Minimal Side Effects</h4>
+                    <p class="text-gray-200">Most patients experience no significant side effects, unlike many
+                        psychiatric medications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose TMS -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-[#263146] mb-4">Why Choose TMS Therapy?</h2>
+                <div class="section-divider mx-auto max-w-52 mb-6"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-lg border-4 border-[#BFA2FF]/40">
+                    <h3 class="text-2xl font-bold text-[#263146] mb-4">For Treatment-Resistant Cases</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        If you've tried multiple medications without success, TMS offers hope. Many patients who haven't
+                        responded to traditional treatments find significant relief with TMS therapy.
+                    </p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg border-4 border-[#BFA2FF]/40">
+                    <h3 class="text-2xl font-bold text-[#263146] mb-4">Medication-Free Alternative</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Avoid medication side effects while achieving lasting results. TMS works with your brain's
+                        natural healing mechanisms without systemic drug interactions.
+                    </p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg border-4 border-[#BFA2FF]/40">
+                    <h3 class="text-2xl font-bold text-[#263146] mb-4">Rapid Symptom Relief</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Many patients notice improvements within 2-4 weeks of starting treatment, compared to months
+                        with traditional medications.
+                    </p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg border-4 border-[#BFA2FF]/40">
+                    <h3 class="text-2xl font-bold text-[#263146] mb-4">Long-Lasting Results</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Maintenance treatments help sustain your progress. Many patients maintain remission for months
+                        or years after completing their initial course.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Insurance & Financing Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-[#263146] mb-4">Insurance & Financing</h2>
+                <div class="section-divider mx-auto max-w-52 mb-6"></div>
+                <p class="text-lg text-gray-600">We work with major insurance providers and offer flexible financing
+                    options</p>
+            </div>
+            <div class="grid md:grid-cols-3 lg:grid-cols-6 gap-8 items-center mb-16">
+                <div class="bg-gray-200 rounded-md p-2 flex justify-center">
+                    <img src="United-Healthcare-Logo.png" alt="United Healthcare" class="insurance-logo">
+                </div>
+                <div class="bg-gray-200 rounded-md p-2 flex justify-center">
+                    <img src="Aetna-Logo.png" alt="Aetna" class="insurance-logo">
+                </div>
+                <div class="bg-gray-200 rounded-md p-2 flex justify-center">
+                    <img src="Cigna.webp" alt="Cigna" class="insurance-logo">
+                </div>
+                <div class="bg-gray-200 rounded-md p-2 flex justify-center">
+                    <img src="BlueCross_BlueShield-f8a9781f21aa4ffd8f5cf91425ea3f4c.png" alt="Blue Cross"
+                        class="insurance-logo">
+                </div>
+                <div class="bg-gray-200 rounded-md p-2 flex justify-center">
+                    <img src="Anthem-Inc.png" alt="Anthem" class="insurance-logo">
+                </div>
+                <div class="bg-gray-200 rounded-md p-2 flex justify-center">
+                    <img src="optum.jpeg" alt="Optum" class="insurance-logo">
+                </div>
+            </div>
+            <div class="bg-gradient-to-br from-[#9966CC] to-[#1a1f5e] text-white p-12 rounded-xl">
+                <h3 class="text-2xl font-bold mb-6">Flexible Payment Options</h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="text-lg font-bold text-[#BFA2FF] mb-2">Insurance Coverage</h4>
+                        <p class="text-gray-200">Most insurance plans cover TMS therapy. We'll verify your coverage and
+                            handle billing.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-[#BFA2FF] mb-2">Payment Plans</h4>
+                        <p class="text-gray-200">We offer flexible payment plans to make treatment accessible and
+                            affordable for all patients.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-[#BFA2FF] mb-2">Financial Assistance</h4>
+                        <p class="text-gray-200">Ask about our financial assistance programs for qualifying patients.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-[#263146] mb-4">Our Compassionate Team</h2>
+                <div class="section-divider mx-auto max-w-52 mb-6"></div>
+                <p class="text-lg text-gray-600">Experienced professionals dedicated to your mental health journey</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Dr. Megan Bowers -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-lift">
+                    <img src="dr.-megan-bowers.jpg" alt="Dr. Megan Bowers" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-[#263146] mb-2">Dr. Megan Bowers, MD, PhD</h3>
+                        <p class="text-[#BFA2FF] font-semibold mb-3">Child, Adolescent, and Adult Integrative
+                            Psychiatrist</p>
+                        <p class="text-gray-600 text-sm">Specializing in comprehensive psychiatric care across all age
+                            groups with an integrative approach.</p>
+                    </div>
+                </div>
+                <!-- Marjorie Armstrong -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-lift">
+                    <img src="majorie-armstrong.jpg" alt="Marjorie Armstrong" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-[#263146] mb-2">Marjorie Armstrong, MSN, PMHNP-BC</h3>
+                        <p class="text-[#BFA2FF] font-semibold mb-3">Adult Psychiatric and Mental Health Nurse
+                            Practitioner</p>
+                        <p class="text-gray-600 text-sm">Dedicated to providing compassionate mental health care with
+                            evidence-based treatment approaches.</p>
+                    </div>
+                </div>
+                <!-- Rosana Graves -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-lift">
+                    <img src="rossana.jpg" alt="Rosana Graves" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-[#263146] mb-2">Rosana Graves</h3>
+                        <p class="text-[#BFA2FF] font-semibold mb-3">Founder and CEO</p>
+                        <p class="text-gray-600 text-sm">Visionary leader committed to making advanced mental health
+                            treatment accessible to all.</p>
+                    </div>
+                </div>
+                <!-- Harmony Phillips -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-lift">
+                    <img src="harmony-phillips.jpg" alt="Harmony Phillips" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-[#263146] mb-2">Harmony Phillips</h3>
+                        <p class="text-[#BFA2FF] font-semibold mb-3">Patient Coordinator</p>
+                        <p class="text-gray-600 text-sm">Your dedicated support person ensuring a smooth and comfortable
+                            experience throughout your treatment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clinic Hours Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-white p-8 rounded-xl shadow-lg border-l-4 border-[#BFA2FF]">
+                    <h2 class="text-3xl font-bold text-[#263146] mb-6">Clinic Hours</h2>
+                    <div class="space-y-3">
+                        <div class="flex justify-between">
+                            <span class="font-semibold text-[#263146]">Monday</span>
+                            <span class="text-gray-600">8:00 AM - 6:00 PM</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-semibold text-[#263146]">Tuesday</span>
+                            <span class="text-gray-600">8:00 AM - 6:00 PM</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-semibold text-[#263146]">Wednesday</span>
+                            <span class="text-gray-600">8:00 AM - 6:00 PM</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-semibold text-[#263146]">Thursday</span>
+                            <span class="text-gray-600">8:00 AM - 6:00 PM</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-semibold text-[#263146]">Friday</span>
+                            <span class="text-gray-600">8:00 AM - 6:00 PM</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-semibold text-[#263146]">Saturday:</span>
+                            <span class="text-gray-600">Closed</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-semibold text-[#263146]">Sunday:</span>
+                            <span class="text-gray-600">Closed</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg border-l-4 border-[#BFA2FF]">
+                    <h2 class="text-3xl font-bold text-[#263146] mb-6">Contact Information</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="font-semibold text-[#263146]">Address</p>
+                            <p class="text-gray-600">757 Maleta Lane, Suite 201<br>Castle Rock, CO 80108</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-[#263146]">Phone</p>
+                            <p class="text-gray-600">303-409-7446</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-[#263146]">Fax</p>
+                            <p class="text-gray-600">303-409-7443</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-[#263146]">Email</p>
+                            <p class="text-gray-600">info@harmonyneurocare.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-[#263146] to-[#1a1f2e]">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Get Started Today</h2>
+                <div class="section-divider mx-auto max-w-52 mb-6"></div>
+                <p class="text-lg text-gray-200">Schedule your consultation and take the first step toward wellness</p>
+            </div>
+            <form class="bg-white rounded-xl shadow-2xl p-8 md:p-12">
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block text-[#263146] font-semibold mb-2">Full Name *</label>
+                        <input type="text" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#BFA2FF]"
+                            placeholder="Your name">
+                    </div>
+                    <div>
+                        <label class="block text-[#263146] font-semibold mb-2">Email *</label>
+                        <input type="email" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#BFA2FF]"
+                            placeholder="your@email.com">
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block text-[#263146] font-semibold mb-2">Phone *</label>
+                        <input type="tel" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#BFA2FF]"
+                            placeholder="(303) 000-0000">
+                    </div>
+                    <div>
+                        <label class="block text-[#263146] font-semibold mb-2">Condition of Interest *</label>
+                        <select required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#BFA2FF]">
+                            <option value="">Select a condition</option>
+                            <option value="depression">Depression</option>
+                            <option value="anxiety">Anxiety Disorders</option>
+                            <option value="ptsd">PTSD</option>
+                            <option value="ocd">OCD</option>
+                            <option value="bipolar">Bipolar Disorder</option>
+                            <option value="chronic-pain">Chronic Pain</option>
+                            <option value="substance-use">Substance Use</option>
+                            <option value="migraine">Migraine</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-[#263146] font-semibold mb-2">Comments</label>
+                    <textarea
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#BFA2FF]"
+                        rows="5"
+                        placeholder="Tell us about your concerns and what brings you to Harmony Neurocare..."></textarea>
+                </div>
+                <div class="space-y-4 mb-8">
+                    <label class="flex items-center">
+                        <input type="checkbox" class="w-5 h-5 text-[#BFA2FF] rounded focus:ring-2 focus:ring-[#BFA2FF]">
+                        <span class="ml-3 text-gray-700">I consent to receive email updates about my treatment and
+                            clinic news</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="w-5 h-5 text-[#BFA2FF] rounded focus:ring-2 focus:ring-[#BFA2FF]">
+                        <span class="ml-3 text-gray-700">I consent to receive SMS alerts for appointment
+                            reminders</span>
+                    </label>
+                </div>
+                <button type="submit"
+                    class="w-full bg-[#BFA2FF] text-[#263146] py-4 rounded-lg font-bold text-lg hover:bg-[#A687FF] transition">
+                    Schedule Your Consultation
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#263146] text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center max-w-[250px] mb-4">
+                        <img src="harmony-light.png" alt="logo">
+                    </div>
+                    <p class="text-gray-300 text-sm">Advanced TMS therapy for mental health and wellness in Castle Rock,
+                        Colorado.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-[#BFA2FF] mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="#services" class="hover:text-[#BFA2FF] transition">Services</a></li>
+                        <li><a href="#tms" class="hover:text-[#BFA2FF] transition">About TMS</a></li>
+                        <li><a href="#team" class="hover:text-[#BFA2FF] transition">Our Team</a></li>
+                        <li><a href="#contact" class="hover:text-[#BFA2FF] transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-[#BFA2FF] mb-4">Contact</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li>757 Maleta Lane, Suite 201</li>
+                        <li>Castle Rock, CO 80108</li>
+                        <li class="pt-2">303-409-7446</li>
+                        <li>info@harmonyneurocare.com</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-[#BFA2FF] mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 bg-[#BFA2FF] rounded-full flex items-center justify-center hover:bg-[#A687FF] transition">
+                            <span class="text-[#263146] font-bold">f</span>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-[#BFA2FF] rounded-full flex items-center justify-center hover:bg-[#A687FF] transition">
+                            <span class="text-[#263146] font-bold">in</span>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-[#BFA2FF] rounded-full flex items-center justify-center hover:bg-[#A687FF] transition">
+                            <span class="text-[#263146] font-bold">ig</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="section-divider mb-8"></div>
+            <div class="text-center text-sm text-gray-400">
+                <p>&copy; 2025 Harmony Neurocare in Castle Rock, CO. All rights reserved. | Privacy Policy | Terms of
+                    Service</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
