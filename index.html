@@ -482,7 +482,8 @@
                 <div class="section-divider mx-auto max-w-52 mb-6"></div>
                 <p class="text-lg text-gray-200">Schedule your consultation and take the first step toward wellness</p>
             </div>
-            <form class="bg-white rounded-xl shadow-2xl p-8 md:p-12">
+            <form accept-charset="UTF-8" class="bg-white rounded-xl shadow-2xl p-8 md:p-12"
+                action='https://app.formester.com/forms/PHdf5zvbz/submissions' method='POST'>
                 <div class="grid md:grid-cols-2 gap-6 mb-6">
                     <div>
                         <label class="block text-[#263146] font-semibold mb-2">Full Name *</label>
@@ -530,12 +531,14 @@
                 </div>
                 <div class="space-y-4 mb-8">
                     <label class="flex items-center">
-                        <input type="checkbox" class="w-5 h-5 text-[#BFA2FF] rounded focus:ring-2 focus:ring-[#BFA2FF]">
+                        <input type="checkbox" required
+                            class="w-5 h-5 text-[#BFA2FF] rounded focus:ring-2 focus:ring-[#BFA2FF]">
                         <span class="ml-3 text-gray-700">I consent to receive email updates about my treatment and
                             clinic news</span>
                     </label>
                     <label class="flex items-center">
-                        <input type="checkbox" class="w-5 h-5 text-[#BFA2FF] rounded focus:ring-2 focus:ring-[#BFA2FF]">
+                        <input type="checkbox" required
+                            class="w-5 h-5 text-[#BFA2FF] rounded focus:ring-2 focus:ring-[#BFA2FF]">
                         <span class="ml-3 text-gray-700">I consent to receive SMS alerts for appointment
                             reminders</span>
                     </label>
@@ -588,6 +591,11 @@
             </div>
         </div>
     </footer>
+
+    <noindex>
+        <script src="//widget.callbacktracker.com/tracker/fac55248694921c7aae26eb9866de1c9238245f2" charset="UTF-8"
+            async="async" type="text/javascript"></script>
+    </noindex>
 </body>
 
 </html>
