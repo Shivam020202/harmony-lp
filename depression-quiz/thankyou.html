@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment Results - Harmony Neurocare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 min-h-screen font-sans">
+
+    <!-- Header - Updated for Options Psychiatry -->
+    <header class="sticky top-0 z-50 bg-[#2D384C] shadow-lg border-b border-[#1f2937]">
+        <a href="index.html" class="block">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-20 md:h-24 lg:h-28">
+                    <!-- Logo -->
+                    <div class="flex-shrink-0 flex items-center">
+                        <img src="logo.png" alt="Harmony Neurocare" class="h-8 md:h-8 w-fit object-contain">
+                    </div>
+
+                    <!-- CTA Buttons - Updated phone number -->
+                    <div class="flex items-center space-x-3 sm:space-x-4">
+                        <a href="tel:3034097446"
+                            class="inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 bg-white text-[#2D384C] font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-200 shadow-sm">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                                </path>
+                            </svg>
+                            <span class="hidden sm:inline">Call Now</span>
+                            <span class="sm:hidden">Call</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="py-8 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+
+            <!-- Loading State -->
+            <div id="loading" class="text-center py-20">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-700 mx-auto"></div>
+                <p class="mt-4 text-gray-600">Loading your results...</p>
+            </div>
+
+            <!-- Error State -->
+            <div id="error-state" class="hidden min-h-[60vh] flex items-center justify-center">
+                <div class="text-center max-w-md mx-auto">
+                    <svg class="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">No Results Found</h2>
+                    <p class="text-gray-600 mb-6">
+                        We couldn't find your quiz results. Please take the quiz first to see your personalized
+                        recommendations.
+                    </p>
+                    <a href="/depression-quiz/"
+                        class="inline-block px-6 py-3 bg-teal-700 text-white font-bold rounded-lg hover:bg-teal-800 transition-colors">
+                        Take the Quiz
+                    </a>
+                </div>
+            </div>
+
+            <!-- Results Content -->
+            <div id="results-content" class="hidden">
+                <!-- Header -->
+                <div class="text-center mb-8">
+                    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
+                        Your Mental Health Assessment Results
+                    </h1>
+                    <p class="text-lg text-gray-600">
+                        Hello <span id="user-name">User</span>, here are your personalized results and next steps.
+                    </p>
+                </div>
+
+                <!-- Results Summary -->
+                <div class="bg-white rounded-xl shadow-lg p-6 sm:p-8 mb-8">
+                    <div class="text-center mb-6">
+                        <div id="score-container" class="inline-block px-8 py-6 rounded-xl border-2">
+                            <p class="text-sm uppercase tracking-wide font-bold text-gray-500 mb-2">Your Total Score</p>
+                            <p id="score-value" class="text-4xl font-bold">
+                                0 / 21
+                            </p>
+                            <p id="risk-level" class="text-xl font-semibold mt-2">
+                                Low Risk
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Analysis -->
+                    <div id="analysis-container" class="p-6 rounded-xl border mb-6">
+                        <h3 id="analysis-title" class="text-lg font-bold mb-3">Your Analysis</h3>
+                        <p id="analysis-text" class="text-gray-800 mb-4 leading-relaxed"></p>
+                        <h3 id="recommendation-title" class="text-lg font-bold mb-3">Our Recommendation</h3>
+                        <p id="recommendation-text" class="text-gray-800 leading-relaxed font-medium"></p>
+                    </div>
+                </div>
+
+                <!-- How Options Psychiatry Can Help - Updated branding -->
+                <div class="bg-white rounded-xl shadow-lg p-6 sm:p-8">
+                    <div class="text-center mb-8">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+                            How Options Psychiatry Can Help
+                        </h2>
+                        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                            If your score suggests you could benefit from professional care, Options Psychiatry
+                            specializes in treating various mental health conditions with personalized, evidence-based
+                            approaches at our Reading, PA location.
+                        </p>
+                    </div>
+
+                    <!-- Conditions We Treat -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold text-gray-900 mb-6 text-center">
+                            We Specialize in Treating:
+                        </h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div class="flex items-center p-3 bg-teal-50 rounded-lg border border-teal-100">
+                                <svg class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-800 font-medium">Depression</span>
+                            </div>
+                            <div class="flex items-center p-3 bg-teal-50 rounded-lg border border-teal-100">
+                                <svg class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-800 font-medium">Anxiety Disorders</span>
+                            </div>
+                            <div class="flex items-center p-3 bg-teal-50 rounded-lg border border-teal-100">
+                                <svg class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-800 font-medium">Obsessive-Compulsive Disorder (OCD)</span>
+                            </div>
+                            <div class="flex items-center p-3 bg-teal-50 rounded-lg border border-teal-100">
+                                <svg class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-800 font-medium">Post-Traumatic Stress Disorder (PTSD)</span>
+                            </div>
+                            <div class="flex items-center p-3 bg-teal-50 rounded-lg border border-teal-100">
+                                <svg class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-800 font-medium">Bipolar Disorder</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Call to Action - Updated phone number -->
+                    <div class="bg-gradient-to-r from-teal-50 to-teal-100 rounded-xl p-8 text-center mb-8">
+                        <h3 class="text-2xl font-bold text-teal-800 mb-4">Take Action Today</h3>
+                        <p class="text-teal-700 mb-6 text-lg">
+                            Contact our team at 757 Maleta Lane, Suite 201, Castle Rock, CO 80108 to schedule a discovery call.
+                        </p>
+                        <a href="tel:3034097446"
+                            class="inline-flex items-center px-8 py-4 bg-teal-700 text-white font-bold text-lg rounded-lg hover:bg-teal-800 transition-colors shadow-lg transform hover:scale-105">
+                            <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                            Book Complementary Discovery Call
+                        </a>
+                    </div>
+
+                    <!-- Our Providers - Updated for Options Psychiatry -->
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-6 text-center">
+                            Meet Our Expert Providers
+                        </h3>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-1 gap-8 place-items-center">
+                            <!-- Provider 1 -->
+                            <div
+                                class="bg-white rounded-2xl p-8 text-center border border-gray-100 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                                <div class="mb-6">
+                                    <div class="relative inline-block">
+                                        <img src="dr.-megan-bowers.jpg" alt="Dr. Megan Bowers"
+                                            class="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-lg border-4 border-white">
+                                    </div>
+                                </div>
+                                <h4 class="text-xl font-bold text-gray-900 mb-3">Dr. Megan Bowers</h4>
+                                <div class="bg-[#f3f0ff] rounded-lg px-4 py-2 mb-4 inline-block">
+                                    <p class="text-[#2D384C] font-semibold text-sm">MD, PhD</p>
+                                </div>
+                                <p class="text-gray-600 text-sm">Child, Adolescent & Adult Psychiatrist</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Info - Added Options Psychiatry details -->
+                    <div class="mt-8 pt-8 border-t border-gray-200">
+                        <h4 class="text-lg font-bold text-gray-900 mb-4 text-center">Contact Information</h4>
+                        <div class="grid md:grid-cols-2 gap-4 text-sm text-gray-600">
+                            <div>
+                                <p class="font-semibold text-gray-900 mb-1">Address</p>
+                                <p>757 Maleta Lane, Suite 201<br>Castle Rock, CO 80108<br>United States</p>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900 mb-1">Contact</p>
+                                <p>Phone: <a href="tel:3034097446" class="text-[#2D384C] hover:underline font-medium">303-409-7446</a><br>
+                                   Email: <a href="mailto:info@harmonyneurocare.com" class="text-[#2D384C] hover:underline font-medium">info@harmonyneurocare.com</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Disclaimer -->
+                    <div class="mt-8 bg-gray-50 border border-gray-200 rounded-lg p-4">
+                        <div class="flex items-start">
+                            <svg class="w-5 h-5 text-gray-500 mt-0.5 mr-3 flex-shrink-0" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <p class="text-sm text-gray-600 italic">
+                                This quiz is a screening tool, not a diagnosis. Only a qualified mental health
+                                professional can provide an accurate diagnosis and treatment plan. Seeking help is a
+                                sign of strength, and effective treatment is available.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer - Updated for Options Psychiatry -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+                <!-- Logo -->
+                <div class="bg-white rounded-lg px-3 py-2">
+                    <img src="logo.png" alt="Options Psychiatry" class="h-8 w-fit object-contain">
+                </div>
+
+                <!-- Tagline and Copyright - Updated -->
+                <div class="text-center md:text-right">
+                    <p class="text-gray-300 mb-1">
+                        Committed to Diversity & Cultural Inclusion at Every Stage of Life
+                    </p>
+                    <p class="text-sm text-gray-400">
+                        © Harmony Neurocare. All rights reserved. 757 Maleta Lane, Suite 201, Castle Rock, CO 80108
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Logic to read cookies and populate page (unchanged)
+        document.addEventListener('DOMContentLoaded', function () {
+            const getCookie = (name) => {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return decodeURIComponent(parts.pop().split(';').shift());
+                return '';
+            };
+
+            const score = getCookie('mentalHealthScore');
+            const name = getCookie('userName') || 'User';
+
+            if (!score || score === '') {
+                document.getElementById('loading').classList.add('hidden');
+                document.getElementById('error-state').classList.remove('hidden');
+                return;
+            }
+
+            const scoreNum = parseInt(score) || 0;
+
+            // Logic from ResultsPage.jsx (unchanged)
+            const getResultsMessage = (score) => {
+                if (score <= 5) {
+                    return {
+                        level: "Low Risk",
+                        summary: "Your responses suggest you're managing well currently.",
+                        recommendation: "No immediate action needed, but stay aware of your mental wellness. Continue monitoring your mental health and practice self-care. If symptoms develop or worsen, don't hesitate to reach out for support.",
+                        color: "text-green-700",
+                        bgColor: "bg-green-50",
+                        borderColor: "border-green-200"
+                    };
+                } else if (score <= 12) {
+                    return {
+                        level: "Moderate Risk",
+                        summary: "Your responses indicate you're experiencing some mental health challenges that are affecting your quality of life.",
+                        recommendation: "Schedule a consultation with a psychiatrist or mental health professional within the next 1-2 weeks. You would benefit from a professional evaluation. Early intervention can prevent symptoms from worsening and help you regain balance.",
+                        color: "text-yellow-700",
+                        bgColor: "bg-yellow-50",
+                        borderColor: "border-yellow-200"
+                    };
+                } else if (score <= 18) {
+                    return {
+                        level: "High Risk",
+                        summary: "Your responses suggest you're dealing with significant mental health symptoms that are substantially impacting your daily life and well-being.",
+                        recommendation: "Contact a mental health provider this week. Professional treatment is strongly recommended. You may be experiencing a treatable condition such as depression, anxiety disorder, OCD, PTSD, or bipolar disorder. Treatment can make a significant difference.",
+                        color: "text-orange-700",
+                        bgColor: "bg-orange-50",
+                        borderColor: "border-orange-200"
+                    };
+                } else {
+                    return {
+                        level: "Very High Risk",
+                        summary: "Your responses indicate severe symptoms that require immediate professional attention.",
+                        recommendation: "Seek help immediately. You're likely struggling considerably, and help is available and necessary. Contact a psychiatrist or mental health crisis service today.",
+                        color: "text-red-700",
+                        bgColor: "bg-red-50",
+                        borderColor: "border-red-200"
+                    };
+                }
+            };
+
+            const result = getResultsMessage(scoreNum);
+
+            // Populate Data
+            document.getElementById('user-name').textContent = name;
+            document.getElementById('score-value').textContent = `${scoreNum} / 21`;
+            document.getElementById('score-value').className = `text-4xl font-bold ${result.color}`;
+
+            document.getElementById('risk-level').textContent = result.level;
+            document.getElementById('risk-level').className = `text-xl font-semibold mt-2 ${result.color}`;
+
+            document.getElementById('score-container').className = `inline-block px-8 py-6 rounded-xl border-2 ${result.bgColor} ${result.borderColor}`;
+
+            document.getElementById('analysis-container').className = `p-6 rounded-xl border ${result.bgColor} ${result.borderColor} mb-6`;
+
+            document.getElementById('analysis-title').className = `text-lg font-bold mb-3 ${result.color}`;
+            document.getElementById('analysis-text').textContent = result.summary;
+
+            document.getElementById('recommendation-title').className = `text-lg font-bold mb-3 ${result.color}`;
+            document.getElementById('recommendation-text').textContent = result.recommendation;
+
+            // Show Content
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('results-content').classList.remove('hidden');
+        });
+    </script>
+</body>
+
+</html>
