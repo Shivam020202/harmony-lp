@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/depression-quiz",
+      "destination": "/depression-quiz/",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/depression-quiz/:path*",
