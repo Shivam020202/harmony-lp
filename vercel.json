@@ -4,12 +4,21 @@
       "source": "/depression-quiz",
       "destination": "/depression-quiz/",
       "permanent": false
+    },
+    {
+      "source": "/tms-quiz",
+      "destination": "/tms-quiz/",
+      "permanent": false
     }
   ],
   "rewrites": [
     {
       "source": "/depression-quiz/:path*",
       "destination": "/depression-quiz/index.html"
+    },
+    {
+      "source": "/tms-quiz/:path*",
+      "destination": "/tms-quiz/index.html"
     }
   ],
   "routes": [
@@ -24,6 +33,18 @@
     {
       "src": "/depression-quiz/(.*)",
       "dest": "/depression-quiz/index.html"
+    },
+    {
+      "src": "/tms-quiz/assets/(.*)",
+      "dest": "/tms-quiz/assets/$1"
+    },
+    {
+      "src": "/tms-quiz/(.*\\.(png|jpg|jpeg|gif|svg|webp|ico))",
+      "dest": "/tms-quiz/$1"
+    },
+    {
+      "src": "/tms-quiz/(.*)",
+      "dest": "/tms-quiz/index.html"
     }
   ]
 }

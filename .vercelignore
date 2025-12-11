@@ -1,4 +1,5 @@
 Archive/
+Archive2/
 **/node_modules/
 .git/
 *.log
