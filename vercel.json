@@ -2,49 +2,21 @@
   "redirects": [
     {
       "source": "/depression-quiz",
-      "destination": "/depression-quiz/",
-      "permanent": false
+      "destination": "/depression-quiz/"
     },
     {
       "source": "/tms-quiz",
-      "destination": "/tms-quiz/",
-      "permanent": false
+      "destination": "/tms-quiz/"
     }
   ],
   "rewrites": [
     {
-      "source": "/depression-quiz/:path*",
+      "source": "/depression-quiz/:path((?!assets).*)*",
       "destination": "/depression-quiz/index.html"
     },
     {
-      "source": "/tms-quiz/:path*",
+      "source": "/tms-quiz/:path((?!assets).*)*",
       "destination": "/tms-quiz/index.html"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/depression-quiz/assets/(.*)",
-      "dest": "/depression-quiz/assets/$1"
-    },
-    {
-      "src": "/depression-quiz/(.*\\.(png|jpg|jpeg|gif|svg|webp|ico))",
-      "dest": "/depression-quiz/$1"
-    },
-    {
-      "src": "/depression-quiz/(.*)",
-      "dest": "/depression-quiz/index.html"
-    },
-    {
-      "src": "/tms-quiz/assets/(.*)",
-      "dest": "/tms-quiz/assets/$1"
-    },
-    {
-      "src": "/tms-quiz/(.*\\.(png|jpg|jpeg|gif|svg|webp|ico))",
-      "dest": "/tms-quiz/$1"
-    },
-    {
-      "src": "/tms-quiz/(.*)",
-      "dest": "/tms-quiz/index.html"
     }
   ]
 }
