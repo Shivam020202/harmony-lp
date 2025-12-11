@@ -1,0 +1,22 @@
+{
+  "rewrites": [
+    {
+      "source": "/depression-quiz/:path*",
+      "destination": "/depression-quiz/index.html"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/depression-quiz/assets/(.*)",
+      "dest": "/depression-quiz/assets/$1"
+    },
+    {
+      "src": "/depression-quiz/(.*\\.(png|jpg|jpeg|gif|svg|webp|ico))",
+      "dest": "/depression-quiz/$1"
+    },
+    {
+      "src": "/depression-quiz/(.*)",
+      "dest": "/depression-quiz/index.html"
+    }
+  ]
+}
