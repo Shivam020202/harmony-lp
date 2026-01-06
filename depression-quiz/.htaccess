@@ -1,14 +1,12 @@
 RewriteEngine On
+RewriteBase /
 
-# IMPORTANT: This tells the server we are working inside this folder
-RewriteBase /depression-quiz/
-
-# Handle client-side routing for the Quiz only
+# Handle client-side routing
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /depression-quiz/index.html [L]
+RewriteRule . /index.html [L]
 
-# --- Optional: Compression (Good to keep) ---
+# Optional: Enable compression
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/plain
     AddOutputFilterByType DEFLATE text/html
@@ -21,7 +19,7 @@ RewriteRule . /depression-quiz/index.html [L]
     AddOutputFilterByType DEFLATE application/x-javascript
 </IfModule>
 
-# --- Optional: Cache Headers (Good to keep) ---
+# Optional: Set cache headers
 <IfModule mod_expires.c>
     ExpiresActive On
     ExpiresByType text/css "access plus 1 year"
